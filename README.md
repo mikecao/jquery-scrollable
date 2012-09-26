@@ -16,9 +16,9 @@ This plugin adds customizable scrollbars to any element. You can style the scrol
 
     $("#content").scrollable();
 
-By default the plugin with bound the content in a 200px x 200px box and add scrollbars if the content exceeds the bounding box. You can set the dimensions of the bounding box by passing in optional height and width parameters.
+By default the plugin with bound the content in a 200px by 200px box and add scrollbars if the content exceeds the bounding box. You can set the dimensions of the bounding box by passing in optional height and width parameters.
 
-    $("#content").scrollable({width: 640, height: 480 });
+    $("#content").scrollable({ width: 640, height: 480 });
 
 # Options
 
@@ -31,8 +31,10 @@ You can modify the behavior of the scrollbars by passing in optional parameters 
     minSliderSize - Minimum size in pixels for the scrollbar slider. (default: 20)
     animate - Animate the scrolling when clicking on the scrollbar. (default: true)
     scrollSpeed - Scrolling animation speed in milliseconds. (default: 300)
-    mousewheel - Enable mousewheel support. Requires the (jquery.mousewheel plugin)[https://github.com/brandonaaron/jquery-mousewheel]. (default: false)
+    mousewheel - Enable mousewheel support. (default: false)
     mousewheelSpeed - Distance to scroll in pixels when using the mousewheel. (default: 30)
+
+Mousewheel support requires the (jquery.mousewheel[https://github.com/brandonaaron/jquery-mousewheel] plugin.
 
 # License
 
