@@ -34,7 +34,7 @@ You can modify the behavior of the scrollbars by passing in optional parameters 
     mousewheel - Enable mousewheel support. (default: false)
     mousewheelSpeed - Distance to scroll in pixels when using the mousewheel. (default: 30)
 
-Mousewheel support requires the (jquery.mousewheel)[https://github.com/brandonaaron/jquery-mousewheel] plugin.
+Mousewheel support requires the [jquery.mousewheel](https://github.com/brandonaaron/jquery-mousewheel) plugin.
 
 # License
 
