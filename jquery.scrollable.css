@@ -81,5 +81,7 @@
 .scrollable .right:after { content: "\25b6"; }
 
 .scrollable .overlay {
+    zoom: 1;
+    filter: alpha(opacity=80);
     opacity: 80%;
 }
