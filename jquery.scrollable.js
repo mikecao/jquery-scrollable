@@ -9,15 +9,13 @@
     var defaults = {
         width: 200,
         height: 200,
-        mousewheel: true,
-        animate: true,
-        overlay: false,
-        bounce: false,
-        scrollSpeed: 300,
-        buttonSpeed: 20,
-        mousewheelSpeed: 30,
         showButtons: true,
-        minSliderSize: 20
+        buttonSpeed: 20,
+        minSliderSize: 10,
+        animate: false,
+        scrollSpeed: 300,
+        mousewheel: true,
+        mousewheelSpeed: 30
     };
 
     /*** Helper functions ***/
@@ -57,6 +55,8 @@
             el.unbind("mousedown");
         }
     }
+
+    /*** Scrollbar Elements ***/
 
     // Scrollbar slider
     function scrollslider(scrollbar) {
@@ -121,6 +121,8 @@
         var viewsize = this.base.view.size()[this.scrollbar.unit],
             length = this.scrollbar.track.length(),
             origin = this.scrollbar.origin;
+
+console.log(length);
 
         // Keep within bounds
         if (pos < 0) pos = 0;
@@ -299,6 +301,9 @@
             this.track.element.css(this.origin, this.button1.element[unit]() + 'px');
             this.track.element[unit](view.element[unit]() - (this.button1.element[unit]() * 2));
         }
+        else {
+            this.track.element[unit](view.element[unit]());
+        }
 
         // Adjust slider size
         var size = (this.element[unit]() / view.content[unit]()) * this.track.element[unit]();
@@ -372,16 +377,18 @@
         this.target = target;
         this.options = $.extend({}, defaults, options);
 
-        this.element = $(target).wrap('<div class="scrollable"></div>')
-            .parent()
-            .width(this.options.width)
-            .height(this.options.height);
-
         this.init();
     }
 
     // Initializes scrollable area
     scrollable.prototype.init = function(){
+        // Create element
+        this.element = $(this.target)
+            .wrap('<div class="scrollable"></div>')
+            .parent()
+            .width(this.options.width)
+            .height(this.options.height);
+
         this.view = new scrollview(this);
         this.vbar = new scrollbar(this, 'vertical');
         this.hbar = new scrollbar(this, 'horizontal');
@@ -450,7 +457,8 @@
         event.preventDefault();
     }
 
-    // jQuery function
+    /*** jQuery functions ***/
+
     $.fn.scrollable = function(options){
         return this.each(function(){
             var el = $(this),
