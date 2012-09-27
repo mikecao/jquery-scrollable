@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>jQuery Scrollable Plugin</title>
+<link rel="stylesheet" type="text/css" href="jquery.scrollable.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript" src="jquery.scrollable.js"></script>
+<style type="text/css">
+td { padding-right: 20px; vertical-align: top; }
+.content { font-size: 14px; background-color: #EEE; padding: 5px; margin-bottom: 20px; z-index: 1000; }
+</style>
+</head>
+<body>
+<h1>jQuery Scrollable Examples</h1>
+
+<h2>Content Without Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box1">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor, nisl eu ullamcorper dictum, ante felis porta dolor, ac ultricies sapien odio eget lorem. Maecenas sit amet diam ante, sit amet luctus quam. Donec sed nulla lacus, ac volutpat odio. Praesent mattis ullamcorper arcu quis pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas at mauris sem. Ut sit amet sem est. Pellentesque molestie libero eget dui interdum accumsan. Nullam eget odio ipsum, a placerat ante. Aenean fermentum pretium placerat. Donec eget urna lacus, quis condimentum diam. Maecenas convallis euismod sapien non semper. Donec aliquet arcu vel lectus blandit ac pellentesque magna pharetra. Integer in turpis nec leo consectetur condimentum at a lorem. Nulla mauris velit, sagittis sed iaculis et, adipiscing non dui. Pellentesque orci justo, iaculis vel lacinia id, semper nec dolor.
+
+Nullam vitae diam eget urna eleifend varius. Proin fermentum nisl vulputate ligula eleifend sit amet suscipit magna elementum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris odio risus, euismod quis adipiscing at, porta vitae quam. Suspendisse aliquet fermentum malesuada. Nam luctus aliquam nibh, quis ultrices est hendrerit ut. Maecenas nec felis vitae ligula tincidunt feugiat vel sit amet augue. Maecenas a ligula arcu. Aenean ultrices convallis dolor vel euismod. Aliquam rutrum vehicula risus, condimentum pharetra est feugiat nec. Integer mi libero, pharetra in luctus sit amet, bibendum vel mi. Proin in leo ac ipsum eleifend gravida. Quisque sem mi, accumsan vel pharetra eu, malesuada non tortor. Curabitur convallis dictum orci at pretium. Nam dictum nunc eu lectus mattis quis feugiat enim viverra. Aenean ornare convallis arcu, vel rutrum lectus ultricies vel. 
+</div>
+</td>
+</tr>
+</table>
+
+<h2>Default Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box2"></div>
+</td>
+<td>
+<pre>
+$("#box2").width(400).scrollable();
+</pre>
+<td>
+</tr>
+</table>
+
+<h2>Vertical Scrollbars Only</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box3"></div>
+</td>
+<td>
+<pre>
+$("#box3").scrollable();
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Horizontal Scrollbars Only</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box4"></div>
+</td>
+<td>
+<pre>
+$("#box4").width(1100).scrollable();
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Scrollbars Without Buttons</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box5"></div>
+</td>
+<td>
+<pre>
+$("#box5").width(400).scrollable({showButtons: false});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Scrolling Animation</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box6"></div>
+</td>
+<td>
+<pre>
+$("#box6").width(400).scrollable({animate: true});
+</pre>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var text = $("#box1").text();
+    $(".content").text(text);
+
+    $("#box2").width(400).scrollable();
+    $("#box3").scrollable();
+    $("#box4").width(1100).scrollable();
+    $("#box5").width(400).scrollable({showButtons: false});
+    $("#box6").width(400).scrollable({animate: true});
+});
+</script>
+</body>
+</html>
