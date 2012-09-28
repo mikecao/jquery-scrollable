@@ -235,6 +235,7 @@
     function scrollbar(scrollable, type) {
         this.base = scrollable;
         this.type = type;
+        this.enabled = true;
 
         this.init();
     }
@@ -335,15 +336,15 @@
             hbar = this.base.hbar.element;
 
         // Make room for scrollbars
-        if (vbar.is(':visible')) {
+        if (this.base.vbar.enabled) {
             this.element.width(this.base.element.width() - vbar.outerWidth());
         }
-        if (hbar.is(':visible')) {
+        if (this.base.hbar.enabled) {
             this.element.height(this.base.element.height() - hbar.outerHeight());
         }
 
         // Reset the view if scrollbars are not needed
-        if (!vbar.is(':visible') && !hbar.is(':visible')) {
+        if (!this.base.vbar.enabled && !this.base.hbar.enabled) {
             this.moveTo(0, 0, false);
         }
     }
@@ -397,11 +398,7 @@
 
     // Updates components of the scrollable area
     scrollable.prototype.update = function(options){
-        var _this = this,
-            view = this.view.element,
-            content = this.view.content,
-            vbar = this.vbar,
-            hbar = this.hbar;
+        var _this = this;
 
         // Update existing options
         this.options = $.extend({}, this.options, options);
@@ -415,20 +412,22 @@
             .height(this.options.height);
 
         // Hide or show scrollbars
-        vbar.element[(content.height() > this.element.height()) ? 'show' : 'hide']();
-        hbar.element[(content.width() > this.element.width()) ? 'show' : 'hide']();
+        this.vbar.element[(this.view.content.height() > this.element.height()) ? 'show' : 'hide']();
+        this.hbar.element[(this.view.content.width() > this.element.width()) ? 'show' : 'hide']();
+        this.vbar.enabled = this.vbar.element.is(':visible');
+        this.hbar.enabled = this.hbar.element.is(':visible');
 
         // Adjust view
         this.view.update();
 
         // Adjust vertical scrollbar
-        if (vbar.element.is(':visible')) {
-            vbar.update();
+        if (this.vbar.enabled) {
+            this.vbar.update();
         }
 
         // Adjust horizontal scrollbar
-        if (hbar.element.is(':visible')) {
-            hbar.update();
+        if (this.hbar.enabled) {
+            this.hbar.update();
         }
 
         // Enable mousewheel
@@ -447,10 +446,10 @@
         var vpos = this.vbar.slider.element.position(),
             hpos = this.hbar.slider.element.position();
 
-        if (deltaY !== 0) {
+        if (deltaY !== 0 && this.vbar.enabled) {
             this.vbar.slider.moveTo(vpos.top - (this.options.mousewheelSpeed * deltaY), false);
         }
-        if (deltaX !== 0) {
+        if (deltaX !== 0 && this.hbar.enabled) {
             this.hbar.slider.moveTo(hpos.left + (this.options.mousewheelSpeed * deltaX), false);
         }
         event.preventDefault();
