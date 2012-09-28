@@ -15,7 +15,8 @@
         animate: false,
         scrollSpeed: 300,
         mousewheel: true,
-        mousewheelSpeed: 30
+        mousewheelSpeed: 30,
+        overlay: false
     };
 
     /*** Helper functions ***/
@@ -122,8 +123,6 @@
             length = this.scrollbar.track.length(),
             origin = this.scrollbar.origin;
 
-console.log(length);
-
         // Keep within bounds
         if (pos < 0) pos = 0;
         else if (pos > length) pos = length;
@@ -133,8 +132,8 @@ console.log(length);
 
         // Move the view content
         this.base.view.moveTo(
-            (origin === 'left') ? round(-1 * viewsize * (pos / length)) : undefined,
-            (origin === 'top') ? round(-1 * viewsize * (pos / length)) : undefined,
+            (origin === 'left') ? (-1 * viewsize * (pos / length)) : undefined,
+            (origin === 'top') ? (-1 * viewsize * (pos / length)) : undefined,
             (animate !== undefined) ? animate :  this.base.options.animate
         );
     }
@@ -307,7 +306,7 @@ console.log(length);
 
         // Adjust slider size
         var size = (this.element[unit]() / view.content[unit]()) * this.track.element[unit]();
-        this.slider.element[unit](round((size > options.minSliderSize) ? size : options.minSliderSize));
+        this.slider.element[unit]((size > options.minSliderSize) ? size : options.minSliderSize);
     }
 
     // Scroll view
@@ -337,10 +336,10 @@ console.log(length);
 
         // Make room for scrollbars
         if (vbar.is(':visible')) {
-            this.element.width(this.base.element.width() - vbar.width());
+            this.element.width(this.base.element.width() - vbar.outerWidth());
         }
         if (hbar.is(':visible')) {
-            this.element.height(this.base.element.height() - hbar.height());
+            this.element.height(this.base.element.height() - hbar.outerHeight());
         }
 
         // Reset the view if scrollbars are not needed
@@ -367,8 +366,8 @@ console.log(length);
     // Gets the scrollable size of the view
     scrollview.prototype.size = function(){
         return {
-            width: this.content.innerWidth() - this.element.width(),
-            height: this.content.innerHeight() - this.element.height()
+            width: this.content.outerWidth() - this.element.width(),
+            height: this.content.outerHeight() - this.element.height()
         };
     }
 
