@@ -15,7 +15,7 @@ td { padding-right: 20px; vertical-align: top; }
 <body>
 <h1>jQuery Scrollable Examples</h1>
 
-<h2>Content Without Scrollbars</h2>
+<h2>Content without scrollbars</h2>
 <table>
 <tr>
 <td>
@@ -28,7 +28,7 @@ Nullam vitae diam eget urna eleifend varius. Proin fermentum nisl vulputate ligu
 </tr>
 </table>
 
-<h2>Default Scrollbars</h2>
+<h2>Default scrollbars</h2>
 <table>
 <tr>
 <td>
@@ -42,7 +42,7 @@ $("#box2").width(400).scrollable();
 </tr>
 </table>
 
-<h2>Vertical Scrollbars Only</h2>
+<h2>Vertical scrollbar only</h2>
 <table>
 <tr>
 <td>
@@ -56,7 +56,7 @@ $("#box3").scrollable();
 </tr>
 </table>
 
-<h2>Horizontal Scrollbars Only</h2>
+<h2>Horizontal scrollbar only</h2>
 <table>
 <tr>
 <td>
@@ -70,7 +70,7 @@ $("#box4").width(1200).scrollable();
 </tr>
 </table>
 
-<h2>Scrollbars Without Buttons</h2>
+<h2>Scrollbars without buttons</h2>
 <table>
 <tr>
 <td>
@@ -84,7 +84,7 @@ $("#box5").width(400).scrollable({showButtons: false});
 </tr>
 </table>
 
-<h2>Scrolling Animation</h2>
+<h2>Scrolling animation</h2>
 <table>
 <tr>
 <td>
@@ -98,7 +98,39 @@ $("#box6").width(400).scrollable({animate: true});
 </tr>
 </table>
 
-<h2>Native Browser Scrollbars</h2>
+<h2>Overlay Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box7"></div>
+</td>
+<td>
+<pre>
+$("#box7").scrollable({overlay: true});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Updating options</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box8"></div>
+</td>
+<td>
+<pre>
+$('#box8').scrollable({width: 300, height: 300});
+
+$('#box8').scrollable({width: 200, height: 200});
+</pre>
+<a href="javascript:void(0);" onclick="$('#box8').scrollable({width: 300, height: 300});">Make bigger</a><br/>
+<a href="javascript:void(0);" onclick="$('#box8').scrollable({width: 200, height: 200});">Make smaller</a><br/>
+</td>
+</tr>
+</table>
+
+<h2>Native browser scrollbars</h2>
 <table>
 <tr>
 <td>
@@ -119,6 +151,8 @@ $(document).ready(function(){
     $("#box4").width(1200).scrollable();
     $("#box5").width(400).scrollable({showButtons: false});
     $("#box6").width(400).scrollable({animate: true});
+    $("#box7").scrollable({overlay: true});
+    $("#box8").scrollable();
 });
 </script>
 </body>

@@ -16,7 +16,8 @@
         scrollSpeed: 300,
         mousewheel: true,
         mousewheelSpeed: 30,
-        overlay: false
+        overlay: false,
+        fadeSpeed: 300
     };
 
     /*** Helper functions ***/
@@ -284,13 +285,29 @@
 
     // Updates scrollbar components
     scrollbar.prototype.update = function() {
+        // Hide or show scrollbar
+        this.element[(this.enabled) ? 'show' : 'hide']();
+
+        if (!this.enabled) return;
+
         var view = this.base.view,
             unit = this.unit,
             options = this.base.options,
-            show = (options.showButtons) ? 'show' : 'hide';
+            show = (options.showButtons) ? 'show' : 'hide',
+            bar = (this.type === 'vertical') ? this.base.hbar : this.base.vbar;
 
-        // Set length to match view
-        this.element[unit](view.element[unit]());
+        // Overlay setup
+        if (this.base.options.overlay) {
+            this.element.addClass('overlay');
+
+            if (bar.enabled) { 
+                this.element[unit](view.element[unit]() - bar.element[this.unit]());
+            }
+        }
+        else {
+            // Set length to match view
+            this.element[unit](view.element[unit]());
+        }
 
         // Show or hide buttons
         this.button1.element[show]();
@@ -336,11 +353,13 @@
             hbar = this.base.hbar.element;
 
         // Make room for scrollbars
-        if (this.base.vbar.enabled) {
-            this.element.width(this.base.element.width() - vbar.outerWidth());
-        }
-        if (this.base.hbar.enabled) {
-            this.element.height(this.base.element.height() - hbar.outerHeight());
+        if (!this.base.options.overlay) {
+            if (this.base.vbar.enabled) {
+                this.element.width(this.base.element.width() - vbar.outerWidth());
+            }
+            if (this.base.hbar.enabled) {
+                this.element.height(this.base.element.height() - hbar.outerHeight());
+            }
         }
 
         // Reset the view if scrollbars are not needed
@@ -411,24 +430,14 @@
         this.view.element.width(this.options.width)
             .height(this.options.height);
 
-        // Hide or show scrollbars
-        this.vbar.element[(this.view.content.height() > this.element.height()) ? 'show' : 'hide']();
-        this.hbar.element[(this.view.content.width() > this.element.width()) ? 'show' : 'hide']();
-        this.vbar.enabled = this.vbar.element.is(':visible');
-        this.hbar.enabled = this.hbar.element.is(':visible');
+        // Check is scrollbars are needed
+        this.vbar.enabled = (this.view.content.height() > this.element.height());
+        this.hbar.enabled = (this.view.content.width() > this.element.width());
 
-        // Adjust view
+        // Adjust components
         this.view.update();
-
-        // Adjust vertical scrollbar
-        if (this.vbar.enabled) {
-            this.vbar.update();
-        }
-
-        // Adjust horizontal scrollbar
-        if (this.hbar.enabled) {
-            this.hbar.update();
-        }
+        this.vbar.update();
+        this.hbar.update();
 
         // Enable mousewheel
         if (this.options.mousewheel) {
@@ -438,6 +447,23 @@
         }
         else {
             this.element.unbind('mousewheel');
+        }
+
+        // Overlay setup
+        if (this.options.overlay) {
+            this.element.hover(
+                function(){
+                    if (_this.vbar.enabled) _this.vbar.element.fadeIn(_this.options.fadeSpeed);
+                    if (_this.hbar.enabled) _this.hbar.element.fadeIn(_this.options.fadeSpeed);
+                },
+                function(){
+                    if (_this.vbar.enabled) _this.vbar.element.fadeOut(_this.options.fadeSpeed);
+                    if (_this.hbar.enabled) _this.hbar.element.fadeOut(_this.options.fadeSpeed);
+                }
+            );
+        }
+        else {
+            this.element.unbind('mouseenter mouseleave');
         }
     }
 
