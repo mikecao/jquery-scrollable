@@ -22,16 +22,6 @@
 
     /*** Helper functions ***/
 
-    // Fast number rounding
-    function round(val) {
-        return (val + 0.5) << 0;
-    }
-
-    // Capitalize the first letter of a string
-    function capitalize(s) {
-        return s.charAt(0).toUpperCase() + s.slice(1);
-    }
-
     // Disables text selecton on an element
     function disable_select(el) {
         if ($.browser.mozilla) {
