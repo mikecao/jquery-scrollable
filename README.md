@@ -44,4 +44,4 @@ Mousewheel support requires the [jquery.mousewheel](https://github.com/brandonaa
 
 # License
 
-This plugin is released under the [MIT](http://www.opensource.org/licenses/mit-license.php) license.
+This plugin is released under the [MIT](https://github.com/mikecao/jquery-scrollable/blob/master/LICENSE) license.
