@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>jQuery Scrollable Plugin</title>
+<link rel="stylesheet" type="text/css" href="jquery.scrollable.css" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="jquery.mousewheel.js"></script>
+<script type="text/javascript" src="jquery.scrollable.js"></script>
+<style type="text/css">
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-bottom: 40px;
+}
+td {
+    padding-right: 20px; vertical-align: top;
+}
+code {
+    font-size: 12px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    background-color: #EEE;
+    padding: 20px;
+    display: block;
+}
+a {
+    color: #26ADE4;
+    text-decoration: none;
+}
+.content {
+    font-size: 14px;
+    background-color: #EEE;
+    padding: 10px;
+    border: 2px solid #ECECEC;
+}
+#title {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin: 20px 0;
+}
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<div id="container">
+<div id="title">jQuery Scrollable Plugin</div>
+<h1>About</h1>
+<p>
+This plugin adds customizable scrollbars to any element. You can style the scrollbars using CSS. <a href="https://github.com/mikecao/jquery-scrollable">View Source</a>.
+</p>
+
+<h1>Usage</h1>
+<p>
+1) Include the CSS file.
+</p>
+
+    <code>&lt;link rel="stylesheet" type="text/css" href="jquery.scrollable.css" /&gt;</code>
+
+<p>
+2) Include the JS file.
+</p>
+    <code>&lt;script type="text/javascript" src="jquery.scrollable.js"&gt;&lt;/script&gt;</code>
+
+<p>
+3) Add scrollbars to an element.
+</p>
+    <code>$("#content").scrollable();</code>
+
+<p>
+For scrollbars to appear, the content must be larger than the scrollable area. By default the plugin will set a height and width of 200px by 200px for the scrollable area. You can set the dimensions of the area by passing in optional height and width parameters.
+</p>
+
+    <code>$("#content").scrollable({ width: 640, height: 480 });</code>
+
+<p>
+If the content changes, simply call the plugin again and the scrollbars will adjust to the new content size. 
+</p>
+
+    <code>$("#content").append('Adding more text.').scrollable();</code>
+
+<h1>Options</h1>
+<p>
+You can modify the behavior of the scrollbars by passing in optional parameters to the plugin.
+</p>
+<code>
+    width - Width of the scrollable area. (default: 200)<br>
+    height - Height of the scrollable area. (default: 200)<br>
+    showButtons - Show buttons on the scrollbar. (default: true)<br>
+    buttonSpeed - Distance to scroll in pixels when clicking on buttons. (default: 20)<br>
+    minSliderSize - Minimum size for the scrollbar slider in pixels. (default: 10)<br>
+    animate - Animate the scrolling when clicking on the scrollbar. (default: false)<br>
+    scrollSpeed - Scrolling animation speed in milliseconds. (default: 300)<br>
+    mousewheel - Enable mousewheel support. (default: true)<br>
+    mousewheelSpeed - Distance to scroll in pixels when using the mousewheel. (default: 30)<br>
+    overlay - Scrollbars only appear when hovering over the content. (default: false)<br>
+    fadeSpeed - Fading animation speed in milliseconds for overlay scrollbars. (default: 300)<br>
+</code>
+<p>
+Mousewheel support requires the <a href="https://github.com/brandonaaron/jquery-mousewheel">jquery.mousewheel</a> plugin.
+</p>
+
+<h1>License</h1>
+<p>
+This plugin is released under the <a href="https://github.com/mikecao/jquery-scrollable/blob/master/LICENSE">MIT</a> license.
+</p>
+
+<h1>Examples</h1>
+
+<h2>Content without scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box1">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor, nisl eu ullamcorper dictum, ante felis porta dolor, ac ultricies sapien odio eget lorem. Maecenas sit amet diam ante, sit amet luctus quam. Donec sed nulla lacus, ac volutpat odio. Praesent mattis ullamcorper arcu quis pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas at mauris sem. Ut sit amet sem est. Pellentesque molestie libero eget dui interdum accumsan. Nullam eget odio ipsum, a placerat ante. Aenean fermentum pretium placerat. Donec eget urna lacus, quis condimentum diam. Maecenas convallis euismod sapien non semper. Donec aliquet arcu vel lectus blandit ac pellentesque magna pharetra. Integer in turpis nec leo consectetur condimentum at a lorem. Nulla mauris velit, sagittis sed iaculis et, adipiscing non dui. Pellentesque orci justo, iaculis vel lacinia id, semper nec dolor.
+
+Nullam vitae diam eget urna eleifend varius. Proin fermentum nisl vulputate ligula eleifend sit amet suscipit magna elementum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris odio risus, euismod quis adipiscing at, porta vitae quam. Suspendisse aliquet fermentum malesuada. Nam luctus aliquam nibh, quis ultrices est hendrerit ut. Maecenas nec felis vitae ligula tincidunt feugiat vel sit amet augue. Maecenas a ligula arcu. Aenean ultrices convallis dolor vel euismod. Aliquam rutrum vehicula risus, condimentum pharetra est feugiat nec. Integer mi libero, pharetra in luctus sit amet, bibendum vel mi. Proin in leo ac ipsum eleifend gravida. Quisque sem mi, accumsan vel pharetra eu, malesuada non tortor. Curabitur convallis dictum orci at pretium. Nam dictum nunc eu lectus mattis quis feugiat enim viverra. Aenean ornare convallis arcu, vel rutrum lectus ultricies vel. 
+</div>
+</td>
+</tr>
+</table>
+
+<h2>Default scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box2"></div>
+</td>
+<td>
+<pre>
+$("#box2").width(400).scrollable();
+</pre>
+<td>
+</tr>
+</table>
+
+<h2>Vertical scrollbar only</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box3"></div>
+</td>
+<td>
+<pre>
+$("#box3").scrollable();
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Horizontal scrollbar only</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box4"></div>
+</td>
+<td>
+<pre>
+$("#box4").width(1200).scrollable();
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Scrollbars without buttons</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box5"></div>
+</td>
+<td>
+<pre>
+$("#box5").width(400).scrollable({showButtons: false});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Scrolling animation</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box6"></div>
+</td>
+<td>
+<pre>
+$("#box6").width(400).scrollable({animate: true});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Overlay Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box7"></div>
+</td>
+<td>
+<pre>
+$("#box7").scrollable({overlay: true});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Updating options</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box8"></div>
+</td>
+<td>
+<pre>
+Bigger: $('#box8').scrollable({width: 300, height: 300});
+
+Smaller: $('#box8').scrollable({width: 200, height: 200});
+</pre>
+<form>
+<input type="button" value="Make Bigger" onclick="$('#box8').scrollable({width: 300, height: 300});" />
+<input type="button" value="Make Smaller" onclick="$('#box8').scrollable({width: 200, height: 200});" />
+</form>
+</td>
+</tr>
+</table>
+
+<h2>Native browser scrollbars</h2>
+<table>
+<tr>
+<td>
+<div style="width:200px;height:200px;overflow:scroll;">
+<div class="content" id="box7" style="width:300px;"></div>
+</div>
+</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var text = $("#box1").text();
+    $(".content").text(text);
+
+    $("#box2").width(400).scrollable();
+    $("#box3").scrollable();
+    $("#box4").width(1200).scrollable();
+    $("#box5").width(400).scrollable({showButtons: false});
+    $("#box6").width(400).scrollable({animate: true});
+    $("#box7").scrollable({overlay: true});
+    $("#box8").scrollable();
+});
+</script>
+</div>
+</body>
+</html>

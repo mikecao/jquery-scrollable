@@ -1,0 +1,88 @@
+.scrollable {
+    position: relative;
+}
+
+.scrollable .view {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.scrollable .bar {
+    position: absolute;
+    cursor: pointer;
+    background-color: #DDD;
+    z-index: 2;
+}
+
+.scrollable .bar:hover .button {
+    background-color: #BBB;
+}
+
+.scrollable .active .button {
+    background-color: #BBB;
+}
+
+.scrollable .active .slider { 
+    background-color: #333 !important;
+}
+
+.scrollable .vertical {
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+}
+
+.scrollable .horizontal {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+.scrollable .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #AAA;
+    z-index: 3;
+}
+
+.scrollable .slider:hover {
+    background-color: #999;
+}
+
+.scrollable .track {
+    position: absolute;
+    z-index: 2;
+}
+
+.scrollable .button {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: #CCC;
+    z-index: 3;
+}
+
+.scrollable .top { top: 0 !important; }
+.scrollable .top:after { content: "\25b2"; }
+.scrollable .bottom { bottom: 0 !important; }
+.scrollable .bottom:after { content: "\25bc"; }
+.scrollable .left { left: 0 !important; }
+.scrollable .left:after { content: "\25c0"; }
+.scrollable .right { right: 0 !important; }
+.scrollable .right:after { content: "\25b6"; }
+
+.scrollable .overlay {
+    zoom: 1;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    display: none;
+}
