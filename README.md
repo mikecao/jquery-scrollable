@@ -2,6 +2,8 @@
 
 This plugin adds customizable scrollbars to any element. You can style the scrollbars using CSS.
 
+[View Examples](http://mikecao.github.io/jquery-scrollable/)
+
 # Usage
 
 1) Include the CSS file.
