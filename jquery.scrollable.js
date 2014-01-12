@@ -17,7 +17,8 @@
         mousewheel: true,
         mousewheelSpeed: 30,
         overlay: false,
-        fadeSpeed: 300
+        fadeSpeed: 300,
+        className: ''
     };
 
     /*** Helper functions ***/
@@ -395,6 +396,7 @@
         this.element = $(this.target)
             .wrap('<div class="scrollable"></div>')
             .parent()
+            .addClass(this.options.className)
             .width(this.options.width)
             .height(this.options.height);
 

@@ -1,0 +1,33 @@
+/*** Round Scrollbars ***/
+
+.round .bar {
+    border-radius: 10px;
+}
+
+.round .slider {
+    border-radius: 10px;
+}
+
+.round .button {
+    border-radius: 10px;
+    font-size: 8px;
+    line-height: 22px;
+    background-color: #333;
+    color: #FFF;
+}
+
+/*** Thin Scrollbars ***/
+
+.thin .horizontal {
+    height: 10px; 
+}
+
+.thin .vertical {
+    width: 10px; 
+}
+
+.thin .slider {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
