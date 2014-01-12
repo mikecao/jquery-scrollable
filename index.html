@@ -4,6 +4,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>jQuery Scrollable Plugin</title>
 <link rel="stylesheet" type="text/css" href="jquery.scrollable.css" />
+<link rel="stylesheet" type="text/css" href="themes.css" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="jquery.mousewheel.js"></script>
@@ -100,6 +101,7 @@ You can modify the behavior of the scrollbars by passing in optional parameters 
     mousewheelSpeed - Distance to scroll in pixels when using the mousewheel. (default: 30)<br>
     overlay - Scrollbars only appear when hovering over the content. (default: false)<br>
     fadeSpeed - Fading animation speed in milliseconds for overlay scrollbars. (default: 300)<br>
+    className - CSS classname to add to the scrollable element. (default: '')<br>
 </code>
 <p>
 Mousewheel support requires the <a href="https://github.com/brandonaaron/jquery-mousewheel">jquery.mousewheel</a> plugin.
@@ -240,6 +242,36 @@ Smaller: $('#box8').scrollable({width: 200, height: 200});
 </tr>
 </table>
 
+<h1>Themes</h1>
+
+<h2>Round Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box9"></div>
+</td>
+<td>
+<pre>
+$("#box9").width(400).scrollable({className:'round'});
+</pre>
+</td>
+</tr>
+</table>
+
+<h2>Thin Scrollbars</h2>
+<table>
+<tr>
+<td>
+<div class="content" id="box10"></div>
+</td>
+<td>
+<pre>
+$("#box9").width(400).scrollable({className:'thin',showButtons:false});
+</pre>
+</td>
+</tr>
+</table>
+
 <script type="text/javascript">
 $(document).ready(function(){
     var text = $("#box1").text();
@@ -252,6 +284,8 @@ $(document).ready(function(){
     $("#box6").width(400).scrollable({animate: true});
     $("#box7").scrollable({overlay: true});
     $("#box8").scrollable();
+    $("#box9").width(400).scrollable({className:'round'});
+    $("#box10").width(400).scrollable({className:'thin',showButtons:false});
 });
 </script>
 </div>
