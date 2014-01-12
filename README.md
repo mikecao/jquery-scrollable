@@ -41,7 +41,7 @@ You can modify the behavior of the scrollbars by passing in optional parameters 
     mousewheelSpeed - Distance to scroll in pixels when using the mousewheel. (default: 30)
     overlay - Scrollbars only appear when hovering over the content. (default: false)
     fadeSpeed - Fading animation speed in milliseconds for overlay scrollbars. (default: 300)
-    className - CSS classname to add to the scrollable element. (default: '')<br>
+    className - CSS classname to add to the scrollable element. (default: '')
 
 Mousewheel support requires the [jquery.mousewheel](https://github.com/brandonaaron/jquery-mousewheel) plugin.
 
