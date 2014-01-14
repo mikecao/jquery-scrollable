@@ -236,7 +236,7 @@ Smaller: $('#box8').scrollable({width: 200, height: 200});
 <tr>
 <td>
 <div style="width:200px;height:200px;overflow:scroll;">
-<div class="content" id="box7" style="width:300px;"></div>
+<div class="content" id="box" style="width:300px;"></div>
 </div>
 </td>
 </tr>
@@ -244,7 +244,9 @@ Smaller: $('#box8').scrollable({width: 200, height: 200});
 
 <h1>Themes</h1>
 
-<h2>Round Scrollbars</h2>
+The themes below are defined in the <b>themes.css</b> file. You can use it as a guide on how to style the scrollbars.
+
+<h2>Thin Scrollbars</h2>
 <table>
 <tr>
 <td>
@@ -252,24 +254,38 @@ Smaller: $('#box8').scrollable({width: 200, height: 200});
 </td>
 <td>
 <pre>
-$("#box9").width(400).scrollable({className:'round'});
+$("#box9").width(400).scrollable({className:'thin',showButtons:false});
 </pre>
 </td>
 </tr>
 </table>
 
-<h2>Thin Scrollbars</h2>
+<h2>Thick Scrollbars</h2>
 <table>
-<tr>
-<td>
-<div class="content" id="box10"></div>
-</td>
-<td>
+    <tr>
+        <td>
+            <div class="content" id="box10"></div>
+        </td>
+        <td>
 <pre>
-$("#box9").width(400).scrollable({className:'thin',showButtons:false});
+$("#box10").width(400).scrollable({className:'thick'});
 </pre>
-</td>
-</tr>
+        </td>
+    </tr>
+</table>
+
+<h2>Round Scrollbars</h2>
+<table>
+    <tr>
+        <td>
+            <div class="content" id="box11"></div>
+        </td>
+        <td>
+<pre>
+$("#box11").width(400).scrollable({className:'round'});
+</pre>
+        </td>
+    </tr>
 </table>
 
 <script type="text/javascript">
@@ -284,8 +300,9 @@ $(document).ready(function(){
     $("#box6").width(400).scrollable({animate: true});
     $("#box7").scrollable({overlay: true});
     $("#box8").scrollable();
-    $("#box9").width(400).scrollable({className:'round'});
-    $("#box10").width(400).scrollable({className:'thin',showButtons:false});
+    $("#box9").width(400).scrollable({className:'thin',showButtons:false});
+    $("#box10").width(400).scrollable({className:'thick'});
+    $("#box11").width(400).scrollable({className:'round'});
 });
 </script>
 </div>

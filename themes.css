@@ -1,7 +1,62 @@
+/*** Thin Scrollbars ***/
+
+.thin .horizontal {
+    height: 12px;
+}
+
+.thin .vertical {
+    width: 12px;
+}
+
+.thin .slider {
+    width: 6px;
+    height: 6px;
+    border-radius: 5px;
+}
+
+.thin .horizontal .slider {
+    top: 3px;
+}
+
+.thin .vertical .slider {
+    left: 3px;
+}
+
+.thin .active .slider {
+    background-color: #6FAB41 !important;
+}
+
+/*** Thick Scrollbars ***/
+
+.thick .slider {
+    width: 16px;
+    height: 16px;
+    background-color: #CCC;
+    border-top: 2px solid #FFF;
+    border-left: 2px solid #FFF;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+
+.thick .button {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-top: 2px solid #FFF;
+    border-left: 2px solid #FFF;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+
+.thick .active .slider {
+    background-color: #FFCC33 !important;
+}
+
 /*** Round Scrollbars ***/
 
 .round .bar {
     border-radius: 10px;
+    border: 2px solid #FFF;
 }
 
 .round .slider {
@@ -11,23 +66,14 @@
 .round .button {
     border-radius: 10px;
     font-size: 8px;
-    line-height: 22px;
-    background-color: #333;
+    line-height: 18px;
     color: #FFF;
 }
 
-/*** Thin Scrollbars ***/
-
-.thin .horizontal {
-    height: 10px; 
+.round .button:hover {
+    background-color: #333;
 }
 
-.thin .vertical {
-    width: 10px; 
-}
-
-.thin .slider {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
+.round .active .slider {
+    background-color: #019DFF !important;
 }
