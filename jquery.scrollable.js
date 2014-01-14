@@ -23,6 +23,11 @@
 
     /*** Helper functions ***/
 
+    // Fast number rounding
+    function round(val) {
+        return (val + 0.5) << 0;
+    }
+
     // Disables text selecton on an element
     function disable_select(el) {
         if ($.browser.mozilla) {
@@ -192,8 +197,8 @@
         // Create track element
         this.element = $('<div/>')
             .addClass('track')
-            .width(this.scrollbar.element.width())
-            .height(this.scrollbar.element.height())
+            .width(this.scrollbar.element.outerWidth())
+            .height(this.scrollbar.element.outerHeight())
             .appendTo(this.scrollbar.element);
 
         // Add click handler to track
@@ -206,21 +211,21 @@
     scrolltrack.prototype.trackClick = function(pos) {
         var slider = this.scrollbar.slider.element,
             origin = this.scrollbar.origin,
-            unit = this.scrollbar.unit;
+            measure = this.scrollbar.measure;
 
         if (pos < slider.offset()[origin]) {
-            this.scrollbar.slider.moveTo(slider.position()[origin] - slider[unit]());
+            this.scrollbar.slider.moveTo(slider.position()[origin] - slider[measure]());
         }
-        else if (pos > slider.offset()[origin] + slider[unit]()) {
-            this.scrollbar.slider.moveTo(slider.position()[origin] + slider[unit]());
+        else if (pos > slider.offset()[origin] + slider[measure]()) {
+            this.scrollbar.slider.moveTo(slider.position()[origin] + slider[measure]());
         }
     }
 
     // Gets the length of the track
     scrolltrack.prototype.length = function(){
         return (this.scrollbar.type === 'vertical') ?
-            this.element.height() - this.scrollbar.slider.element.height() :
-            this.element.width() - this.scrollbar.slider.element.width();
+            this.element.outerHeight() - this.scrollbar.slider.element.outerHeight() :
+            this.element.outerWidth() - this.scrollbar.slider.element.outerWidth();
     }
 
     // Scrollbar
@@ -265,11 +270,13 @@
             case 'horizontal':
                 this.origin = 'left';
                 this.unit = 'width';
+                this.measure = 'outerWidth';
                 break;
 
             case 'vertical':
                 this.origin = 'top';
                 this.unit = 'height';
+                this.measure = 'outerHeight';
                 break;
         }
     }
@@ -283,6 +290,7 @@
 
         var view = this.base.view,
             unit = this.unit,
+            measure = this.measure,
             options = this.base.options,
             show = (options.showButtons) ? 'show' : 'hide',
             bar = (this.type === 'vertical') ? this.base.hbar : this.base.vbar;
@@ -292,7 +300,7 @@
             this.element.addClass('overlay');
 
             if (bar.enabled) { 
-                this.element[unit](view.element[unit]() - bar.element[this.unit]());
+                this.element[unit](view.element[unit]() - bar.element[unit]());
             }
         }
         else {
@@ -306,16 +314,16 @@
 
         // Adjust track size for buttons
         if (options.showButtons) {
-            this.track.element.css(this.origin, this.button1.element[unit]() + 'px');
-            this.track.element[unit](view.element[unit]() - (this.button1.element[unit]() * 2));
+            this.track.element.css(this.origin, this.button1.element[measure]() + 'px');
+            this.track.element[unit](view.element[measure]() - (this.button1.element[measure]() * 2));
         }
         else {
-            this.track.element[unit](view.element[unit]());
+            this.track.element[unit](view.element[measure]());
         }
 
         // Adjust slider size
-        var size = (this.element[unit]() / view.content[unit]()) * this.track.element[unit]();
-        this.slider.element[unit]((size > options.minSliderSize) ? size : options.minSliderSize);
+        var size = round((this.element[unit]() / view.content[unit]()) * this.track.element[unit]());
+        this.slider.element[this.unit]((size > options.minSliderSize) ? size : options.minSliderSize);
     }
 
     // Scroll view
@@ -346,10 +354,10 @@
         // Make room for scrollbars
         if (!this.base.options.overlay) {
             if (this.base.vbar.enabled) {
-                this.element.width(this.base.element.width() - vbar.outerWidth());
+                this.element.width(this.base.element.outerWidth() - vbar.outerWidth());
             }
             if (this.base.hbar.enabled) {
-                this.element.height(this.base.element.height() - hbar.outerHeight());
+                this.element.height(this.base.element.outerHeight() - hbar.outerHeight());
             }
         }
 
@@ -377,8 +385,8 @@
     // Gets the scrollable size of the view
     scrollview.prototype.size = function(){
         return {
-            width: this.content.outerWidth() - this.element.width(),
-            height: this.content.outerHeight() - this.element.height()
+            width: this.content.outerWidth() - this.element.outerWidth(),
+            height: this.content.outerHeight() - this.element.outerHeight()
         };
     }
 
